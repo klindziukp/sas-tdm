@@ -1,0 +1,4 @@
+rootProject.name = 'tdm'
+include 'performance-test'
+include 'integration-test'
+

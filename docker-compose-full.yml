@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  mariadb:
+    image: mariadb:10.2
+    restart: 'always'
+    hostname: mariadb
+    container_name: mariadb
+    environment:
+      MYSQL_DATABASE: "classicmodels"
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - "./script/sql/001_schema.sql:/docker-entrypoint-initdb.d/001_schema.sql"
+    ports:
+      - "3306:3306"
+
+  tdm-service:
+    container_name: tdm-service
+    image: "docker.io/library/tdm:0.0.1-SNAPSHOT"
+    environment:
+      spring.jpa.show-sql: "true"
+      spring.datasource.url: jdbc:mysql://mariadb:3306/classicmodels
+      spring.datasource.username: root
+      spring.datasource.password: root
+    ports:
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - mariadb
+    restart: on-failure
