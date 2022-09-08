@@ -1,0 +1,103 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.3'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+    id 'java'
+}
+
+group = 'com.klindziuk.sas'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(project(':tdm-database-repository'))
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+bootBuildImage {
+    builder = 'paketobuildpacks/builder:tiny'
+    imageName = "${project.name}:${version}"
+}
+
+test.enabled = false
+
+tasks.named('test') {
+    useJUnitPlatform()
+
+}
+
+task generateCustomers(type: Test) {
+    useJUnitPlatform {
+        includeTags "generate-customers"
+    }
+}
+
+task generateEmployees(type: Test) {
+    useJUnitPlatform {
+        includeTags "generate-employees"
+    }
+}
+
+task generateOffices(type: Test) {
+    useJUnitPlatform {
+        includeTags "generate-offices"
+    }
+}
+
+task generateOrderDetails(type: Test) {
+    useJUnitPlatform {
+        includeTags "generate-order-details"
+    }
+}
+
+task generateOrders(type: Test) {
+    useJUnitPlatform {
+        includeTags "generate-orders"
+    }
+}
+
+task generatePayments(type: Test) {
+    useJUnitPlatform {
+        includeTags "generate-payments"
+    }
+}
+
+task generateProducts(type: Test) {
+    useJUnitPlatform {
+        includeTags "generate-products"
+    }
+}
+
+task generateProductLines(type: Test) {
+    useJUnitPlatform {
+        includeTags "generate-product-lines"
+    }
+}
+
+task insertRealData(type: Test) {
+    useJUnitPlatform {
+        includeTags "insert-real-data"
+    }
+}
+
+task cleanup(type: Test) {
+    useJUnitPlatform {
+        includeTags "cleanup"
+    }
+}

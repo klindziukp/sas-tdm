@@ -1,0 +1,63 @@
+server:
+  port: 8081
+spring:
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: update
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/classicmodels?enabledTLSProtocols=TLSv1.2&useSSL=false
+    schema: classicmodels
+    username: root
+    password: root
+generator:
+  real-data-enabled: false
+  office:
+    percentage-calculation: true
+    synthetic-percentage: 50
+    invalid-percentage: 0
+    simple-generation-size: 10
+  employee:
+    percentage-calculation: true
+    synthetic-percentage: 50
+    invalid-percentage: 0
+    simple-generation-size: 10
+  customer:
+    percentage-calculation: true
+    synthetic-percentage: 50
+    invalid-percentage: 0
+    simple-generation-size: 10
+  order:
+    percentage-calculation: true
+    synthetic-percentage: 50
+    invalid-percentage: 0
+    simple-generation-size: 10
+  product-line:
+    percentage-calculation: true
+    synthetic-percentage: 50
+    invalid-percentage: 0
+    simple-generation-size: 10
+  product:
+    percentage-calculation: true
+    synthetic-percentage: 50
+    invalid-percentage: 0
+    simple-generation-size: 10
+  order-detail:
+    percentage-calculation: true
+    synthetic-percentage: 50
+    invalid-percentage: 0
+    simple-generation-size: 10
+  payment:
+    percentage-calculation: true
+    synthetic-percentage: 50
+    invalid-percentage: 0
+    simple-generation-size: 10
+
+

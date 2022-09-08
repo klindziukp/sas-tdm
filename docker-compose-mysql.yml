@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:5.7.24
+    container_name: mysql
+    volumes:
+      - mysqldata:/usr/share/mysql/data
+      - "./script/sql/001_schema.sql:/docker-entrypoint-initdb.d/001_schema.sql"
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: classicmodels
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  mysqldata:
+    driver: local
