@@ -42,6 +42,12 @@ tasks.named('test') {
 
 }
 
+task generateAllItems(type: Test) {
+    useJUnitPlatform {
+        includeTags "generate-product-lines"
+    }
+}
+
 task generateCustomers(type: Test) {
     useJUnitPlatform {
         includeTags "generate-customers"

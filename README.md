@@ -37,11 +37,10 @@ Hit play button for `com.klindziuk.sas.tdm.gen.TdmApplication`  class
 ```bash
 ./gradlew cleanup insertRealData  
 ```
-#### Data generation for performance Test and performance Test execution
-- Open `Terminal` and execute following command
+#### Data generation before for performance test and performance test execution
 ```bash
 ./gradlew cleanup insertRealData(Optional) {gradle-task-name-for-generate-db-items}
-./gradlew clean gatlingRun-tdm.TDMSimulation
+./gradlew clean gatlingRun-tdm.TdmSimulation
 ```
 
 ### Data generation via API
@@ -78,4 +77,25 @@ Test data generator could be shipped as standalone docker image and reused in pi
 docker-compose -f docker-compose-full.yml up
 ```
 
-## TODO: data configuration
+## Data genration configuration
+Data generation properties for each table could be set via config:
+```yaml
+generator:
+  real-data-enabled: true
+  office:
+    percentage-calculation: true
+    synthetic-percentage: 20
+    invalid-percentage: 10
+    simple-generation-size: 10
+  employee:
+    percentage-calculation: true
+    synthetic-percentage: 50
+    invalid-percentage: 30
+    simple-generation-size: 4
+  customer:
+    percentage-calculation: true
+    synthetic-percentage: 70
+    invalid-percentage: 10
+    simple-generation-size: 10
+ ...
+```
