@@ -37,7 +37,7 @@ Hit play button for `com.klindziuk.sas.tdm.gen.TdmApplication`  class
 ```bash
 ./gradlew cleanup insertRealData  
 ```
-#### Data generation before for performance test and performance test execution
+#### Data generation before for performance test execution
 ```bash
 ./gradlew cleanup insertRealData(Optional) {gradle-task-name-for-generate-db-items}
 ./gradlew clean gatlingRun-tdm.TdmSimulation
